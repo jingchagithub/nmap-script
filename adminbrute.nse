@@ -58,7 +58,7 @@ action = function(host, port)
                   local i=0
         local all=nil
         for  i=1,#admindir do
-           all = http.pipeline_add(admindir[i],nil, all)
+           all = http.pipeline_add(host .. admindir[i],nil, all)
         end
          local results = http.pipeline_go(host, 80, all)
                   for i=1,#results do
