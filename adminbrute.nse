@@ -38,17 +38,17 @@ categories = {"brute"}
 local PATH = stdnse.get_script_args(SCRIPT_NAME .. ".path" or nil)
 
 if PATH~=nil then
-        local y = 1  
-        local file,error = io.open(PATH,"r")
-        if file then
-        for line in file:lines() do  
-                admindir[y]=line
-                y = y + 1   
-        file:close()
-                   end
-        else
-                         
-        end 
+                  local y=1
+                  admindir={}
+                  file,error=io.open(PATH,"r")
+                  if(not(file))then
+                     return
+                  end
+                  for line in file:lines() do  
+                     admindir[y]=line
+                     y = y + 1  
+                  end  
+                  file:close() 
 end
 
 
